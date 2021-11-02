@@ -7,5 +7,7 @@ int main(int argc, char const *argv[]) {
     "Length: " << list.length() << '\n' <<
     "Index 6: " << list.get(6) << '\n';
 
+  list.print();
+
   return 0;
 }
