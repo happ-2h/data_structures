@@ -113,6 +113,7 @@ class LinkedList {
     }
 
     void remove(T data) {
+      if (!m_head)return;
       if (m_head->data == data) {
         Node<T>* delete_node = m_head;
         m_head = m_head->next;
