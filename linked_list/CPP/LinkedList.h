@@ -143,6 +143,22 @@ class LinkedList {
       }
     }
 
+    void reverse() {
+      if (!m_head || !m_head->next) return;
+
+      Node<T>*prev = nullptr;
+      Node<T>*next = m_head;
+      Node<T>*next_next = nullptr;
+
+      while(next) {
+        next_next = next->next;
+        next->next = prev;
+        prev = next;
+        next=next_next;
+      }
+      m_head = prev;
+    }
+
     void clear() {
       if (!m_head) return;
 

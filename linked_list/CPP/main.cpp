@@ -16,6 +16,7 @@ int main(int argc, char const *argv[]) {
   list.print();
 
   copied.remove(5);
+  copied.reverse();
   copied.print();
 
   return 0;
