@@ -3,7 +3,6 @@
     -Operator+ links two lists
     -Operator[] replace T get(<index>) and add(T)
 
-    -Permanent reverse
     -Permanent split
     --Non permanent
     ---🤔 make a ✅deep copy or both related??
