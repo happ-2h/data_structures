@@ -7,6 +7,11 @@ int main(int argc, char const *argv[]) {
     "Length: " << list.length() << '\n' <<
     "Index 6: " << list.get(6) << '\n';
 
+  list.remove(60);
+  list.remove(0);
+  list.remove(2);
+  list.remove(5);
+
   list.print();
 
   return 0;

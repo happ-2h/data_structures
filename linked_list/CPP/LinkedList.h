@@ -113,14 +113,39 @@ class LinkedList {
 
     // LATER
     void remove(T data) {
+      if (m_head->data == data) {
+        Node<T>* delete_node = m_head;
+        m_head = m_head->next;
+        delete delete_node;
+        delete_node = nullptr;
+      }
+      else {
+        Node<T>* temp = m_head->next;
+        Node<T>* prev = m_head;
 
+        while(temp) {
+          if (temp->data == data) {
+            Node<T>* next = temp->next;
+            prev->next = next;
+            delete temp;
+            temp=nullptr;
+
+            break;
+          }
+          else {
+            prev=prev->next;
+            temp=temp->next;
+          }
+        }
+        
+      }
     }
 
     void clear() {
       if (!m_head) return;
 
       Node<T>* temp = m_head->next;
-      
+
       while(temp) {
         delete m_head;
         m_head = temp;
