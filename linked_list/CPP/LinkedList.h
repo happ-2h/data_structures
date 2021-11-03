@@ -3,14 +3,10 @@
     -Operator+ links two lists
     -Operator[] replace T get(<index>) and add(T)
 
-    -Copy constructor
-
     -Permanent reverse
     -Permanent split
     --Non permanent
     ---🤔 make a ✅deep copy or both related??
-
-    -remove(<index>)
  */
 
 #pragma once
@@ -43,8 +39,11 @@ class LinkedList {
       }
     }
 
-    // LATER
-    LinkedList(const LinkedList& list) = delete;
+    LinkedList(const LinkedList& list) {
+      for (std::size_t i{0}; i < list.length(); ++i) {
+        add(list.get(i));
+      }
+    }
 
     ~LinkedList(){
       clear();
@@ -72,8 +71,10 @@ class LinkedList {
         new_node->data = data;
         new_node->next = nullptr;
 
-        if (!m_head->next)
+        if (!m_head->next){
           m_head->next = new_node;
+          ++m_length;
+        }
         else {
           Node<T>* temp = m_head->next;
 
@@ -90,7 +91,7 @@ class LinkedList {
     T get(std::size_t index=0) const try {
       if (!m_head)
         throw std::out_of_range{"\nget(<index>): attempted to index an empty list\n"};
-      if (index > m_length)
+      if (index >= m_length)
         throw std::out_of_range{"\nget(<index>): index is larger than list of length " + std::to_string(m_length) + "\n"};
 
       if (index == 0) return m_head->data;
@@ -111,13 +112,13 @@ class LinkedList {
       return m_length;
     }
 
-    // LATER
     void remove(T data) {
       if (m_head->data == data) {
         Node<T>* delete_node = m_head;
         m_head = m_head->next;
         delete delete_node;
         delete_node = nullptr;
+        --m_length;
       }
       else {
         Node<T>* temp = m_head->next;
@@ -129,6 +130,7 @@ class LinkedList {
             prev->next = next;
             delete temp;
             temp=nullptr;
+            --m_length;
 
             break;
           }

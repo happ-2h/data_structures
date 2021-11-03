@@ -2,6 +2,7 @@
 
 int main(int argc, char const *argv[]) {
   LinkedList<> list{0,1,2,3,4,5,6};
+  LinkedList<> copied(list);
 
   std::cout << 
     "Length: " << list.length() << '\n' <<
@@ -13,6 +14,9 @@ int main(int argc, char const *argv[]) {
   list.remove(5);
 
   list.print();
+
+  copied.remove(5);
+  copied.print();
 
   return 0;
 }
