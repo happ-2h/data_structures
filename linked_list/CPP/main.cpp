@@ -6,8 +6,8 @@ int main(int argc, char const *argv[]) {
   LinkedList<int> empty;
 
   std::cout << 
-    "Length: " << list.length() << '\n' <<
-    "Index 6: " << list.get(6) << '\n';
+    "Length  : " << list.length() << '\n' <<
+    "Index 6 : " << list.get(6)   << '\n';
 
   list.remove(60);
   list.remove(0);
