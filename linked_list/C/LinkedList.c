@@ -29,7 +29,8 @@ LinkedList* LinkedList_new(int data) {
 
 void LinkedList_destroy(LinkedList* self) {
   if (self) {
-    self->clear(self);
+    if (self->head)
+      self->clear(self);
     free(self);
     self = NULL;
   }
@@ -68,13 +69,17 @@ void LinkedList_print(LinkedList* self) {
 }
 
 void LinkedList_clear(LinkedList* self) {
-  if (self->head) {
-    Node* next = self->head;
+  if (!self->head)return;
 
-    while(self->head) {
-      next=next->next;
-      free(self->head);
-      self->head=next;
-    }
+  Node* temp = self->head->next;
+
+  while (temp) {
+    free(self->head);
+    self->head = temp;
+    temp = self->head->next;
+  }
+  if (self->head) {
+    free(self->head);
+    self->head = NULL;
   }
 }
