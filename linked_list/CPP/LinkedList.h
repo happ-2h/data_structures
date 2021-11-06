@@ -19,6 +19,10 @@
 
 template<typename T=int>
 class LinkedList {
+
+  template<typename U>
+  friend std::ostream& operator<<(std::ostream& os, const LinkedList<U>& list);
+
   private:
     Node<T>* m_head{nullptr};
     std::size_t m_length{0};
@@ -178,7 +182,7 @@ class LinkedList {
     }
 
     /// Prints the entire list
-    void print() {
+    void print() const {
       Node<T>* temp = m_head;
 
       while(temp) {
@@ -188,3 +192,8 @@ class LinkedList {
       std::cout << "nullptr\n";
     }
 };
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const LinkedList<T>& list) {
+	list.print();
+	return os;
+}
