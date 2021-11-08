@@ -3,29 +3,17 @@
 
 #include "LinkedList.h"
 
-LinkedList* LinkedList_new(int data) {
+LinkedList* LinkedList_new() {
   LinkedList* temp = malloc(sizeof(LinkedList));
 
   temp->head = NULL;
 
   temp->add = LinkedList_add;
   temp->print = LinkedList_print;
+  temp->clear = LinkedList_clear;
 
   return temp;
 }
-
-/*LinkedList* LinkedList_new(int data) {
-  LinkedList* temp = malloc(sizeof(LinkedList));
-
-  temp->head = malloc(sizeof(Node));
-  temp->head->data = data;
-  temp->head->next = NULL;
-
-  temp->add = LinkedList_add;
-  temp->print = LinkedList_print;
-
-  return temp;
-}*/
 
 void LinkedList_destroy(LinkedList* self) {
   if (self) {
@@ -76,7 +64,7 @@ void LinkedList_clear(LinkedList* self) {
   while (temp) {
     free(self->head);
     self->head = temp;
-    temp = self->head->next;
+    temp = temp->next;
   }
   if (self->head) {
     free(self->head);

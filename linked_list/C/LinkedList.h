@@ -13,7 +13,6 @@ typedef struct LINKEDLIST {
 } LinkedList;
 
 LinkedList* LinkedList_new();
-// LinkedList* LinkedList_new(int data);
 void LinkedList_destroy(LinkedList*);
 
 void LinkedList_add(LinkedList* self, int data);
